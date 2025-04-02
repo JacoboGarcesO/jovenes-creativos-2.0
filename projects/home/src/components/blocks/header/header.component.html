@@ -3,37 +3,32 @@
     <img class="header__logo" src="/images/logo.svg" alt="Logo Jóvenes creaTIvos">
   </a>
 
+  <div class="header__mobile-toggle" (click)="toggleMobileMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
   <nav class="header__nav">
     <menu class="header__menu">
       <li class="header__item">
-        <a 
-          class="header__link" 
-          data-section="header" 
-          routerLinkActive="header__link--active" 
-          routerLink="/"
+        <a class="header__link" data-section="header" routerLinkActive="header__link--active" routerLink="/"
           (click)="scrollToSection('header')">Inicio</a>
-        </li>
+      </li>
       <li class="header__item">
-        <a 
-          class="header__link" 
-          data-section="about" 
-          (click)="scrollToSection('about')">Acerca de</a>
-        </li>
+        <a class="header__link" data-section="about" (click)="scrollToSection('about')">Acerca de</a>
+      </li>
       <li class="header__item">
-        <a 
-          class="header__link"
-          data-section="courses"
-          (click)="scrollToSection('courses')">Cursos</a>
-        </li>
+        <a class="header__link" data-section="courses" (click)="scrollToSection('courses')">Cursos</a>
+      </li>
       <li class="header__item">
-        <a
-          class="header__link"
-          data-section="testimonials"
-          (click)="scrollToSection('testimonials')">Testimonios</a>
-        </li>
+        <a class="header__link" data-section="testimonials" (click)="scrollToSection('testimonials')">Testimonios</a>
+      </li>
     </menu>
     <button class="header__button" type="button">
       <a routerLink="/auth/login">Iniciar sesión</a>
     </button>
   </nav>
+
+  <div class="overlay" (click)="closeMobileMenu()"></div>
 </div>

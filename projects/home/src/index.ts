@@ -8,12 +8,12 @@ export const routes: Routes = [
     children: [
       {
         path: '',
-        loadComponent: () => import('./components/blocks/header/header.component').then(m => m.HeaderComponent),
+        loadComponent: () => import('./containers/header-container/header-container.component').then(m => m.HeaderContainerComponent),
         outlet: 'header'
       },
       {
         path: '',
-        loadComponent: () => import('./components/blocks/hero/hero.component').then(m => m.HeroComponent),
+        loadComponent: () => import('./containers/hero-container/hero-container.component').then(m => m.HeroContainerComponent),
         outlet: 'hero'
       },
       {
