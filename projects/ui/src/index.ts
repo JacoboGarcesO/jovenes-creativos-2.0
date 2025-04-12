@@ -1,0 +1,1 @@
+export { AnimationService } from './core/services/animation.service';
