@@ -1,5 +1,5 @@
 import { Routes } from "@angular/router";
-import { LayoutMainComponent } from "./components/layouts/layout-main/layout-main.component";
+import { LayoutMainComponent } from "./infrastructure/ui/layouts/layout-main/layout-main.component";
 
 export const routes: Routes = [
   {
@@ -8,18 +8,13 @@ export const routes: Routes = [
     children: [
       {
         path: '',
-        loadComponent: () => import('./containers/header-container/header-container.component').then(m => m.HeaderContainerComponent),
+        loadComponent: () => import('./infrastructure/adapters/input/header-input-adapter/header-input-adapter.component').then(m => m.HeaderInputAdapterComponent),
         outlet: 'header'
       },
       {
         path: '',
-        loadComponent: () => import('./containers/hero-container/hero-container.component').then(m => m.HeroContainerComponent),
+        loadComponent: () => import('./infrastructure/adapters/input/hero-input-adapter/hero-input-adapter.component').then(m => m.HeroInputAdapterComponent),
         outlet: 'hero'
-      },
-      {
-        path: '',
-        loadComponent: () => import('./components/blocks/footer/footer.component').then(m => m.FooterComponent),
-        outlet: 'footer'
       }
     ]
   }
