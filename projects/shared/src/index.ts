@@ -1,0 +1,1 @@
+export { AnimationService } from './infrastructure/services/animation.service';

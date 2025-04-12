@@ -1,5 +1,5 @@
 import { Component, inject, OnDestroy, OnInit } from '@angular/core';
-import { AnimationService } from 'ui';
+import { AnimationService } from 'shared';
 
 @Component({
   selector: 'home-hero',

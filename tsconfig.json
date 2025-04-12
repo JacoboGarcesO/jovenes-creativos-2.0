@@ -21,8 +21,8 @@
       "home": [
         "./dist/home"
       ],
-      "ui": [
-        "./dist/ui"
+      "shared": [
+        "./dist/shared"
       ]
     }
   },
