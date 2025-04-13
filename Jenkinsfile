@@ -27,7 +27,7 @@ pipeline {
                 sh 'npm run build home'
                 
                 // Build main application last
-                sh 'npm run build main --configuration production'
+                sh 'npm run build main'
             }
         }
         
