@@ -15,6 +15,11 @@ export const routes: Routes = [
         path: '',
         loadComponent: () => import('./infrastructure/adapters/input/hero-input-adapter/hero-input-adapter.component').then(m => m.HeroInputAdapterComponent),
         outlet: 'hero'
+      },
+      {
+        path: '',
+        loadComponent: () => import('./infrastructure/adapters/input/courses-input-adapter/courses-input-adapter.component').then(m => m.CoursesInputAdapterComponent),
+        outlet: 'courses'
       }
     ]
   }

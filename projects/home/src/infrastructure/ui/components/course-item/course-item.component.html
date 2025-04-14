@@ -1,0 +1,13 @@
+<article class="course-item" [style.background-image]="'url(/images/' + image() + '.webp)'">
+  <header class="course-item__header">
+    <h3 class="course-item__title">{{title()}}</h3>
+  </header>
+
+  <footer class="course-item__footer">
+    <button class="course-item__button" (click)="modalRef.open()"><img class="course-item__icon" src="/icons/plus.svg" alt="Plus Icon"></button>
+  </footer>
+</article>
+
+<shared-modal #modalRef>
+  <ng-content />
+</shared-modal>

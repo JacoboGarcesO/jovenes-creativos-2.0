@@ -1,0 +1,54 @@
+.course-item {
+  position: relative;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 70%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 100%);
+    border-radius: 1rem 1rem 0 0;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  &__header {
+    position: relative;
+    z-index: 2;
+  }
+
+  &__title {
+    color: #FFF;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+    margin: 0;
+    font-size: 20px;
+  }
+
+  &__footer {
+    display: flex;
+    justify-content: end;
+  }
+
+  &__button {
+    border: none;
+    outline: none;
+    background-color: #FFF;
+    border-radius: 50%;
+    padding: .75rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+  }
+}
