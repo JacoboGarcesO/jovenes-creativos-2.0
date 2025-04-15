@@ -1,5 +1,5 @@
 .courses-grid {
-  padding: 100px 20px;
+  padding: 40px 20px 20px;
   max-width: 1140px;
   margin: 0 auto;
 
@@ -14,7 +14,8 @@
     grid-template-rows: repeat(12, 50px);
     grid-gap: 20px;
 
-    & :nth-child(1), :nth-child(3) {
+    & :nth-child(1),
+    :nth-child(3) {
       grid-row: 1 / 7;
     }
 
@@ -22,12 +23,51 @@
       grid-row: 1 / 8;
     }
 
-    & :nth-child(4), :nth-child(6) {
+    & :nth-child(4),
+    :nth-child(6) {
       grid-row: 7 / 13;
     }
 
     & :nth-child(5) {
       grid-row: 8 / 13;
+    }
+
+    @media (width <=768px) {
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: repeat(12, 80px);
+
+      & :nth-child(1)  {
+        grid-row: 1 / 4;
+      }
+
+      & :nth-child(2) {
+        grid-row: 1 / 5;
+      }
+
+      & :nth-child(3) {
+        grid-row: 4 / 9;
+      }
+
+      & :nth-child(4) {
+        grid-row: 5 / 8;
+      }
+
+      & :nth-child(5) {
+        grid-row: 9 / 13;
+      }
+
+      & :nth-child(6) {
+        grid-row: 8 / 13;
+      }
+    }
+
+    @media (width <=576px) {
+      grid-template-columns: 1fr;
+      grid-template-rows: repeat(6, 400px);
+
+      & > * {
+        grid-row: auto !important;
+      }
     }
   }
 }

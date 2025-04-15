@@ -17,7 +17,7 @@ export class HeaderComponent {
       this.activeLink('header');
       return;
     }
-    
+
     this.activeSection = sectionId;
     const element = document.getElementById(sectionId);
     if (element) {
@@ -30,17 +30,34 @@ export class HeaderComponent {
   @HostListener('window:scroll', ['$event'])
   onWindowScroll() {
     const sections = ['header', 'about', 'courses', 'testimonials'];
+    const scrollPosition = window.scrollY + 150;
+    let currentSection = '';
 
+    if (window.scrollY < 200) {
+      this.activeLink('header');
+      this.activeSection = 'header';
+      return;
+    }
+
+    // Encontrar la sección actual basada en la posición de scroll
     for (const section of sections) {
       const element = document.getElementById(section);
       if (element) {
-        const rect = element.getBoundingClientRect();
-        if (rect.top <= 100 && rect.bottom >= 100) {
-          this.activeLink(section);
-          this.activeSection = section;
+        const sectionTop = element.offsetTop;
+        const sectionHeight = element.offsetHeight;
+
+        // Verificar si el scroll está dentro de esta sección
+        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+          currentSection = section;
           break;
         }
       }
+    }
+
+    // Si encontramos una sección activa, actualizar el enlace activo
+    if (currentSection) {
+      this.activeLink(currentSection);
+      this.activeSection = currentSection;
     }
   }
 
@@ -63,7 +80,6 @@ export class HeaderComponent {
       nav?.classList.add('active');
       toggle?.classList.add('active');
       overlay?.classList.add('active');
-      document.body.style.overflow = 'hidden';
     } else {
       this.closeMobileMenu();
     }
@@ -78,6 +94,5 @@ export class HeaderComponent {
     nav?.classList.remove('active');
     toggle?.classList.remove('active');
     overlay?.classList.remove('active');
-    document.body.style.overflow = '';
   }
 }

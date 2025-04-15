@@ -1,57 +1,56 @@
-.modal-overlay {
+.modal {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
   justify-content: center;
   align-items: center;
   z-index: 1000;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.3s ease, visibility 0.3s ease;
+  display: none;
+  animation: modalFadeIn 0.5s ease forwards;
 
-  &.show {
-    opacity: 1;
-    visibility: visible;
+  &--open {
+    display: flex;
   }
-}
 
-.modal-container {
-  background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  width: 90%;
-  max-width: 500px;
-  max-height: 90vh;
-  overflow-y: auto;
-  position: relative;
-  animation: modalFadeIn 0.3s ease forwards;
-}
-
-.modal-header {
-  padding: 10px;
-  display: flex;
-  justify-content: flex-end;
-}
-
-.close-button {
-  background: transparent;
-  border: none;
-  font-size: 24px;
-  cursor: pointer;
-  color: #666;
-  transition: color 0.2s ease;
-
-  &:hover {
-    color: #000;
+  &__container {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    max-width: 90dvw;
+    max-height: 90dvh;
+    overflow-y: auto;
+    position: relative;
   }
-}
 
-.modal-content {
-  padding: 0 20px 20px;
+  &__header {
+    display: flex;
+    justify-content: flex-end;
+
+    & span {
+      padding: 20px;
+
+    }
+  }
+
+  &__close {
+    background: transparent;
+    border: none;
+    font-size: 28px;
+    cursor: pointer;
+    color: #666;
+    transition: color 0.2s ease;
+  
+    &:hover {
+      color: #000;
+    }
+  }
+
+  &__content {
+    padding: 0 20px 20px;
+  }
 }
 
 @keyframes modalFadeIn {
