@@ -78,54 +78,80 @@ The project is organized into several Angular libraries and applications:
 
 ```
 jovenes-creativos-frontend/
-├── .angular/                  # Angular cache and build files
-├── .vscode/                   # VS Code configuration
-│   ├── extensions.json
-│   ├── launch.json
-│   └── tasks.json
-├── projects/                  # Angular workspace projects
-│   ├── home/                  # Home library
-│   │   ├── src/
-│   │   │   ├── components/    # Reusable UI components
-│   │   │   │   ├── _styles/   # Component styles
-│   │   │   │   ├── blocks/    # Block components
-│   │   │   │   └── layouts/   # Layout components
-│   │   │   ├── containers/    # Container components
-│   │   │   │   ├── header-container/
-│   │   │   │   └── hero-container/
-│   │   │   └── index.ts       # Public API exports
-│   │   ├── ng-package.json    # Angular package configuration
-│   │   ├── package.json       # Library dependencies
-│   │   ├── tsconfig.lib.json  # TypeScript configuration
-│   │   └── README.md          # Library documentation
-│   ├── ui/                    # UI library
-│   │   ├── src/
-│   │   │   ├── assets/        # UI assets
-│   │   │   └── index.ts       # Public API exports
-│   │   ├── ng-package.json    # Angular package configuration
-│   │   ├── package.json       # Library dependencies
-│   │   ├── tsconfig.lib.json  # TypeScript configuration
-│   │   └── README.md          # Library documentation
-│   └── main/                  # Main application
-│       ├── public/            # Static assets
-│       │   ├── images/        # Image assets
-│       │   └── favicon.ico    # Favicon
-│       ├── src/               # Application source code
-│       │   ├── app/           # Application components
-│       │   │   ├── app.component.ts
-│       │   │   ├── app.config.ts
-│       │   │   └── app.routes.ts
-│       │   ├── assets/        # Application assets
-│       │   │   └── font/      # Font files
-│       │   ├── index.html     # Main HTML file
-│       │   ├── main.ts        # Application entry point
-│       │   └── styles.scss    # Global styles
-│       └── tsconfig.app.json  # TypeScript configuration
-├── angular.json               # Angular workspace configuration
-├── package.json               # Project dependencies
-├── tsconfig.json              # TypeScript configuration
-├── LICENSE                    # License file
-└── README.md                  # Project documentation
+├── .angular/                            # Angular cache and build files
+├── .editorconfig                        # Editor configuration
+├── .github/                             # GitHub workflows for CI/CD pipelines
+│   └── workflows/
+│       └── deploy.yaml                  # Automated deployment configuration
+├── .gitignore                           # Git ignore rules for version control
+├── .vscode/                             # VS Code editor configuration
+│   ├── extensions.json                  # Recommended extensions for the project
+│   ├── launch.json                      # Debugging configuration
+│   └── tasks.json                       # Custom task definitions
+├── LICENSE                              # License file
+├── README.md                            # Project documentation
+├── angular.json                         # Angular workspace configuration
+├── package-lock.json                    # NPM lock file for dependency versioning
+├── package.json                         # Project dependencies and scripts
+├── preview.png                          # Project preview image
+├── projects/                            # Angular workspace projects (monorepo structure)
+│   ├── home/                            # Home library - contains home page components
+│   │   ├── README.md                    # Home library documentation
+│   │   ├── ng-package.json              # Angular package configuration
+│   │   ├── package.json                 # Library-specific dependencies
+│   │   ├── src/                         # Source code for the home library
+│   │   │   ├── application/             # Application layer - contains use cases and application services
+│   │   │   ├── domain/                  # Domain layer - contains business logic, entities and value objects
+│   │   │   ├── index.ts                 # Public API exports for the library
+│   │   │   └── infrastructure/          # Infrastructure layer - implements interfaces defined in domain
+│   │   │       ├── adapters/            # Adapters for external services and APIs
+│   │   │       │   ├── input/           # Input adapters (controllers, event handlers)
+│   │   │       │   └── output/          # Output adapters (repositories, external service clients)
+│   │   │       ├── services/            # Infrastructure services implementation
+│   │   │       └── ui/                  # User interface components
+│   │   │           ├── _styles/         # Component-specific styles
+│   │   │           ├── components/      # Reusable UI components for home features
+│   │   │           └── layouts/         # Layout components for home pages
+│   │   ├── tsconfig.lib.json            # TypeScript configuration for library
+│   │   ├── tsconfig.lib.prod.json       # Production TypeScript configuration
+│   │   └── tsconfig.spec.json           # Test TypeScript configuration
+│   ├── main/                            # Main application - entry point that ties everything together
+│   │   ├── public/                      # Static public assets
+│   │   ├── src/                         # Source code for the main application
+│   │   │   ├── app/                     # Core application code
+│   │   │   │   ├── app.component.ts     # Root component
+│   │   │   │   ├── app.config.ts        # Application configuration
+│   │   │   │   └── app.routes.ts        # Application routing
+│   │   │   ├── assets/                  # Static assets (images, fonts, etc.)
+│   │   │   ├── index.html               # Main HTML entry point
+│   │   │   ├── main.ts                  # Application bootstrap file
+│   │   │   └── styles.scss              # Global styles
+│   │   ├── tsconfig.app.json            # TypeScript configuration for application
+│   │   └── tsconfig.spec.json           # Test TypeScript configuration
+│   └── shared/                          # Shared library - common components used across the application
+│       ├── README.md                    # Shared library documentation
+│       ├── ng-package.json              # Angular package configuration
+│       ├── package.json                 # Library-specific dependencies
+│       ├── src/                         # Source code for the shared library
+│       │   ├── application/             # Application layer - shared use cases and services
+│       │   ├── domain/                  # Domain layer - shared business logic and models
+│       │   ├── index.ts                 # Public API exports for the library
+│       │   └── infrastructure/          # Infrastructure layer - shared implementations
+│       │       ├── adapters/            # Shared adapters for external services
+│       │       │   ├── input/           # Shared input adapters
+│       │       │   └── output/          # Shared output adapters
+│       │       ├── services/            # Shared service implementations
+│       │       └── ui/                  # Shared UI components
+│       │           ├── _styles/         # Shared component styles
+│       │           ├── components/      # Reusable UI components
+│       │           ├── forms/           # Form components and validators
+│       │           └── layouts/         # Shared layout components
+│       ├── tsconfig.lib.json            # TypeScript configuration for library
+│       ├── tsconfig.lib.prod.json       # Production TypeScript configuration
+│       └── tsconfig.spec.json           # Test TypeScript configuration
+├── tsconfig.json                        # Root TypeScript configuration
+├── LICENSE                              # License file
+└── README.md                            # Project documentation
 ```
 
 This structure follows Angular's recommended workspace organization with a monorepo approach, separating reusable libraries from the main application.
